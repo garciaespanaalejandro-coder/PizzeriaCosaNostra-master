@@ -1,9 +1,12 @@
 package model;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@XmlType(propOrder = {"Nombre", "Descripcion","Calorias", "Precio", "TiempoPreparacion","Ingredientes" })
 public class Pizza {
 
     private String id;
@@ -33,24 +36,31 @@ public class Pizza {
     }
 
     // Getters e Setters
+    @XmlAttribute(name="ID")
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
+    @XmlElement(name="Nombre")
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
+    @XmlElement(name="Descripcion")
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
+    @XmlElement(name="Calorias")
     public int getCalorias() { return calorias; }
     public void setCalorias(int calorias) { this.calorias = calorias; }
 
+    @XmlElement(name="Precio")
     public double getPrecio() { return precio; }
     public void setPrecio(double precio) { this.precio = precio; }
 
+    @XmlElement(name="TiempoPreparacion")
     public int getTiempoPreparacion() { return tiempoPreparacion; }
     public void setTiempoPreparacion(int tiempoPreparacion) { this.tiempoPreparacion = tiempoPreparacion; }
 
+    @XmlElement(name="Ingredientes")
     public List<String> getIngredientes() { return ingredientes; }
     public void setIngredientes(List<String> ingredientes) { this.ingredientes = ingredientes; }
 

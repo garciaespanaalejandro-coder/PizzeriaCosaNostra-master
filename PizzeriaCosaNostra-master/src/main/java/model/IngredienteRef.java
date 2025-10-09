@@ -1,7 +1,9 @@
 package model;
 
 
-    public class IngredienteRef {
+import javax.xml.bind.annotation.XmlElement;
+
+public class IngredienteRef {
 
         private static final long serialVersionUID = 1L;
 
@@ -12,7 +14,7 @@ package model;
         public IngredienteRef(String id) {
             this.id = id;
         }
-
+        @XmlElement(name="id")
         public String getId() {
             return id;
         }
