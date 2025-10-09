@@ -5,6 +5,12 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class LandingPageDAOProperties implements LandingPageDAO{
+    private String Path;
+
+    public LandingPageDAOProperties(String path) {
+        this.Path=path;
+    }
+
     //Funciones sobreescritas para recuperar el valor de cada apartado
     @Override
     public String quienes_somos(String idioma) {
@@ -22,7 +28,7 @@ public class LandingPageDAOProperties implements LandingPageDAO{
     //Funcion de lectura de fichero y que devuelve el valor segun la clave y idioma
     public String leerProperties(String inicioKey, String idioma) {
         String valor="";
-        try (FileInputStream fis = new FileInputStream("PizzeriaCosaNostra-master/src/main/resources/config.properties")) {
+        try (FileInputStream fis = new FileInputStream(this.Path)) {
             Properties props = new Properties();
             props.load(fis);
             //Unimos inicioKey y idioma para generar la clave entera

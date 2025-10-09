@@ -26,17 +26,17 @@ public class App {
             SwingUtilities.invokeLater(() -> {
                 try {
                     /*===============ZONA DE CÓDIGO MODIFICABLE===============*/
-                    String pathProp = "src/main/resources/config.properties";
+                    String pathProp = "PizzeriaCosaNostra-master/src/main/resources/config.properties";
                     String pathLocal = "src/main/resources/locales.csv";
                     String pathPizza = "src/main/resources/Carta.xml";
                     String pathIngedientes = "src/main/resources/ingredientes.dat";
                     //Este fichero hay que generarlo
                     String pathPizzaJSON = "src/main/resources/Pizzas.json";
                     //DAOS TO-DO
-                    LandingPageDAO dao = new LandingPageDAOProperties();    //Creamos el DAO
+                    LandingPageDAO dao = new LandingPageDAOProperties(pathProp);    //Creamos el DAO con el path del properties
 
                     //Servicios TO-DO
-                    LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Asignamos el dao y a correr
+                    LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Creamos el service y asignamos el dao y a correr
                     LocalService localService = new LocalServiceMock();
                     PizzaService pizzaService = new PizzaServiceMock();
                     IngredienteService ingredienteService = new IngredienteServiceMock();
