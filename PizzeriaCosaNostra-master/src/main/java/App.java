@@ -33,10 +33,10 @@ public class App {
                     //Este fichero hay que generarlo
                     String pathPizzaJSON = "src/main/resources/Pizzas.json";
                     //DAOS TO-DO
-                    LandingPageDAO dao = new LandingPageDAOProperties();
+                    LandingPageDAO dao = new LandingPageDAOProperties();    //Creamos el DAO
 
                     //Servicios TO-DO
-                    LandingPageService landingService = new LandingPageServiceFuncional(dao);
+                    LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Asignamos el dao y a correr
                     LocalService localService = new LocalServiceMock();
                     PizzaService pizzaService = new PizzaServiceMock();
                     IngredienteService ingredienteService = new IngredienteServiceMock();

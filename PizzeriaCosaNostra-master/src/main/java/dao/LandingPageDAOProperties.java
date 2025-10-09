@@ -5,23 +5,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class LandingPageDAOProperties implements LandingPageDAO{
-
-    public String leerProperties(String inicioKey, String idioma) {
-        String valor="";
-        try (FileInputStream fis = new FileInputStream("PizzeriaCosaNostra-master/src/main/resources/config.properties")) {
-            Properties props = new Properties();
-            props.load(fis);
-            valor = props.getProperty(inicioKey + idioma);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return valor;
-    }
-
+    //Funciones sobreescritas para recuperar el valor de cada apartado
     @Override
     public String quienes_somos(String idioma) {
-
         return leerProperties("quienes_somos.", idioma);
     }
     @Override
@@ -31,5 +17,20 @@ public class LandingPageDAOProperties implements LandingPageDAO{
     @Override
     public String experiencia(String idioma) {
         return leerProperties("experiencia.", idioma);
+    }
+
+    //Funcion de lectura de fichero y que devuelve el valor segun la clave y idioma
+    public String leerProperties(String inicioKey, String idioma) {
+        String valor="";
+        try (FileInputStream fis = new FileInputStream("PizzeriaCosaNostra-master/src/main/resources/config.properties")) {
+            Properties props = new Properties();
+            props.load(fis);
+            //Unimos inicioKey y idioma para generar la clave entera
+            valor = props.getProperty(inicioKey + idioma);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return valor;
     }
 }
