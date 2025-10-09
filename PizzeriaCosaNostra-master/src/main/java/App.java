@@ -2,6 +2,8 @@ import controlador.IngredienteController;
 import controlador.LandingPageController;
 import controlador.LocalController;
 import controlador.PizzaController;
+import dao.LandingPageDAO;
+import dao.LandingPageDAOProperties;
 import service.*;
 import vista.*;
 
@@ -31,9 +33,10 @@ public class App {
                     //Este fichero hay que generarlo
                     String pathPizzaJSON = "src/main/resources/Pizzas.json";
                     //DAOS TO-DO
+                    LandingPageDAO dao = new LandingPageDAOProperties();
 
                     //Servicios TO-DO
-                    LandingPageService landingService = new LandingPageServiceMock();
+                    LandingPageService landingService = new LandingPageServiceFuncional(dao);
                     LocalService localService = new LocalServiceMock();
                     PizzaService pizzaService = new PizzaServiceMock();
                     IngredienteService ingredienteService = new IngredienteServiceMock();
