@@ -24,9 +24,26 @@ public class IngredientesIMPL implements IngredientesDAO {
         return new ArrayList<>();
     }
 
-    public void anadirIngrediente(Ingrediente ing){
+    public void actualizarIngrediente(Ingrediente ing){
+        //recuperamos la lista para poder trabajar con ella
         List<Ingrediente> listaIngredientes = recuperarIngredientes();
-        listaIngredientes.add(ing);
+        boolean encontrado=false;
+        //buscamos si el ingrediente ya existe
+        for (int i=0; i<=listaIngredientes.size(); i++){
+            Ingrediente actual= listaIngredientes.get(i);
+            //comprobamos que si el id es igual, en caso de que sea igual lo modifica.
+            if (actual.getId().equalsIgnoreCase(ing.getId())){
+                listaIngredientes.add(i,ing);
+                encontrado=true;
+                break;
+            }
+        }
+
+        //si no encontró el id igual, lo añade
+        if (!encontrado){
+            listaIngredientes.add(ing);
+        }
+
         guardarIngredientes(listaIngredientes);
     }
 

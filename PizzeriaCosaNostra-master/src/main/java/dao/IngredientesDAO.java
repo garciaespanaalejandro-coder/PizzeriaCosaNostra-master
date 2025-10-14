@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IngredientesDAO {
     public List<Ingrediente> recuperarIngredientes();
-
+    public void actualizarIngrediente(Ingrediente ing);
 
 }
