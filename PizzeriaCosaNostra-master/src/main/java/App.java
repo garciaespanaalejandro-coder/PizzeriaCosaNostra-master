@@ -2,6 +2,7 @@ import controlador.IngredienteController;
 import controlador.LandingPageController;
 import controlador.LocalController;
 import controlador.PizzaController;
+import dao.IngredientesIMPL;
 import dao.LandingPageDAO;
 import dao.LandingPageDAOProperties;
 import service.*;
@@ -34,12 +35,13 @@ public class App {
                     String pathPizzaJSON = "src/main/resources/Pizzas.json";
                     //DAOS TO-DO
                     LandingPageDAO dao = new LandingPageDAOProperties(pathProp);    //Creamos el DAO con el path del properties
+                    IngredientesIMPL dao2= new IngredientesIMPL(pathIngedientes);
 
                     //Servicios TO-DO
                     LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Creamos el service y asignamos el dao y a correr
                     LocalService localService = new LocalServiceMock();
                     PizzaService pizzaService = new PizzaServiceMock();
-                    IngredienteService ingredienteService = new IngredienteServiceMock();
+                    IngredienteService ingredienteService = new IngredienteServiceFuncional(dao2);
                     PizzaConversionService conversionService = new PizzaConversionServiceMock();
 
                     /*===============FIN ZONA DE CÓDIGO MODIFICABLE===============*/

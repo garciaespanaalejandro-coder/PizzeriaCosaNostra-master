@@ -8,7 +8,11 @@ import java.util.List;
 
 public class IngredientesIMPL implements IngredientesDAO {
 
-    String path="PizzeriaCosaNostra-master/src/main/resources/ingredientes.dat";
+    String path;
+
+    public IngredientesIMPL(String path) {
+        this.path=path;
+    }
 
     public List<Ingrediente> recuperarIngredientes(){
         //deserializamos y retornamos una lista de ingredientes
@@ -29,11 +33,11 @@ public class IngredientesIMPL implements IngredientesDAO {
         List<Ingrediente> listaIngredientes = recuperarIngredientes();
         boolean encontrado=false;
         //buscamos si el ingrediente ya existe
-        for (int i=0; i<=listaIngredientes.size(); i++){
+        for (int i=0; i<listaIngredientes.size(); i++){
             Ingrediente actual= listaIngredientes.get(i);
-            //comprobamos que si el id es igual, en caso de que sea igual lo modifica.
+            //comprobamos si el id es igual, en caso de que sea igual lo modifica.
             if (actual.getId().equalsIgnoreCase(ing.getId())){
-                listaIngredientes.add(i,ing);
+                listaIngredientes.set(i,ing);
                 encontrado=true;
                 break;
             }
