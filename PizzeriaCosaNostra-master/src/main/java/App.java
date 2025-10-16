@@ -27,7 +27,7 @@ public class App {
             SwingUtilities.invokeLater(() -> {
                 try {
                     /*===============ZONA DE CÓDIGO MODIFICABLE===============*/
-                    String pathProp = "PizzeriaCosaNostra-master/src/main/resources/config.properties";
+                    String pathProp = "src/main/resources/config.properties";
                     String pathLocal = "src/main/resources/locales.csv";
                     String pathPizza = "src/main/resources/Carta.xml";
                     String pathIngedientes = "src/main/resources/ingredientes.dat";
