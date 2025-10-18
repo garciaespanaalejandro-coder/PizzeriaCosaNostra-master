@@ -2,7 +2,7 @@ import controlador.IngredienteController;
 import controlador.LandingPageController;
 import controlador.LocalController;
 import controlador.PizzaController;
-import dao.IngredientesIMPL;
+import dao.IngredientesDAOIMPL;
 import dao.LandingPageDAO;
 import dao.LandingPageDAOProperties;
 import service.*;
@@ -35,7 +35,7 @@ public class App {
                     String pathPizzaJSON = "src/main/resources/Pizzas.json";
                     //DAOS TO-DO
                     LandingPageDAO dao = new LandingPageDAOProperties(pathProp);    //Creamos el DAO con el path del properties
-                    IngredientesIMPL dao2= new IngredientesIMPL(pathIngedientes);
+                    IngredientesDAOIMPL dao2= new IngredientesDAOIMPL(pathIngedientes);
 
                     //Servicios TO-DO
                     LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Creamos el service y asignamos el dao y a correr
