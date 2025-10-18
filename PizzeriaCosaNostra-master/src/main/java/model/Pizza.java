@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlType(propOrder = {"Nombre", "Descripcion","Calorias", "Precio", "TiempoPreparacion","Ingredientes" })
+@XmlType(propOrder = {"nombre", "descripcion","calorias", "precio", "tiempoPreparacion","ingredientes" })
 public class Pizza {
 
     private String id;

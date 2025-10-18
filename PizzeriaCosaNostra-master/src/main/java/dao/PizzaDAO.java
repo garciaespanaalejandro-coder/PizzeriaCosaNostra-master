@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PizzaDAO {
     public List<Pizza> recuperarPizzas();
-    public void actualizarPizzas();
+    public boolean actualizarPizzas(Pizza pizz);
     public void generarJson();
 
 }

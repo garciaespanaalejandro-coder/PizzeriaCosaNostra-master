@@ -6,11 +6,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IngredientesIMPL implements IngredientesDAO {
+public class IngredientesDAOIMPL implements IngredientesDAO {
 
     String path;
 
-    public IngredientesIMPL(String path) {
+    public IngredientesDAOIMPL(String path) {
         this.path=path;
     }
 

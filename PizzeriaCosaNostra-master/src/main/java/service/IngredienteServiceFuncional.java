@@ -1,16 +1,16 @@
 package service;
 
-import dao.IngredientesIMPL;
+import dao.IngredientesDAOIMPL;
 import model.Ingrediente;
 
 import java.io.IOException;
 import java.util.List;
 
 public class IngredienteServiceFuncional implements IngredienteService{
-    private IngredientesIMPL IMPL;
+    private IngredientesDAOIMPL IMPL;
 
     //Al contructor le pasamos un IngredientesIMPPL y lo asignamos al atributo
-    public IngredienteServiceFuncional(IngredientesIMPL d){
+    public IngredienteServiceFuncional(IngredientesDAOIMPL d){
         this.IMPL=d;
     }
 
