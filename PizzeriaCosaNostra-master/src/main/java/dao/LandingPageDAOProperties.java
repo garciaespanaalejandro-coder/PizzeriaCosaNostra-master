@@ -21,9 +21,7 @@ public class LandingPageDAOProperties implements LandingPageDAO{
         return leerProperties("amor_productos.", idioma);
     }
     @Override
-    public String experiencia(String idioma) {
-        return leerProperties("experiencia.", idioma);
-    }
+    public String experiencia(String idioma) {return leerProperties("experiencia.", idioma);}
 
     //Funcion de lectura de fichero y que devuelve el valor segun la clave y idioma
     public String leerProperties(String inicioKey, String idioma) {
@@ -32,7 +30,7 @@ public class LandingPageDAOProperties implements LandingPageDAO{
             Properties props = new Properties();
             props.load(fis);
             //Unimos inicioKey y idioma para generar la clave entera
-            valor = props.getProperty(inicioKey + idioma);
+            valor = props.getProperty(inicioKey + idioma, "");
 
         } catch (IOException e) {
             e.printStackTrace();
