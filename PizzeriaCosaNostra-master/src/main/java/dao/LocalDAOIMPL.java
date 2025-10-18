@@ -12,6 +12,8 @@ public class LocalDAOIMPL implements LocalDAO{
     private String path;
     //Le pasamos la ruta del archivo csv para poder trabajar con el archivo posteriormente
     public LocalDAOIMPL(String path){this.path=path;}
+
+
     @Override
     public List<Local> recuperarFichero() {
         List<Local> locales = new ArrayList<>();
