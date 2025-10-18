@@ -29,7 +29,6 @@ public class App {
                     String pathLocal = "PizzeriaCosaNostra-master/src/main/resources/locales.csv";
                     String pathPizza = "PizzeriaCosaNostra-master/src/main/resources/Carta.xml";
                     String pathIngedientes = "PizzeriaCosaNostra-master/src/main/resources/ingredientes.dat";
-                    //ejemplo apra que actualice app
                     //Este fichero hay que generarlo
                     String pathPizzaJSON = "src/main/resources/Pizzas.json";
                     //DAOS TO-DO
