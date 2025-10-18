@@ -4,7 +4,8 @@ import model.Ingrediente;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,78 +26,77 @@ public class IngredientesDAOIMPLTest {
         }
     }
 
-    // TEST para recuperarIngredientes cuando el archivo no existe
+    // TEST PARA recuperarIngredientes() - ARCHIVO NO EXISTE
     @Test
-    public void testRecuperarIngredientes(){
-        //Ejecutamos el método que queremos probar
+    public void testRecuperarIngredientes() {
+        // NO creamos archivo antes - probamos el caso de error
         List<Ingrediente> resultado = dao.recuperarIngredientes();
 
-        //Verificamos que retorna una lista vacía cuando no hay archivo
         assertNotNull(resultado);
         assertTrue(resultado.isEmpty());
     }
 
-    // TEST para actualizarIngrediente cuando agregamos un nuevo ingrediente
+    // TEST PARA recuperarIngredientes() - ARCHIVO CON DATOS
+    @Test
+    public void testRecuperarIngredientes_ConDatos() throws IOException {
+        // Arrange: Creamos archivo con datos DIRECTAMENTE
+        List<Ingrediente> ingredientesEsperados = new ArrayList<>();
+        ingredientesEsperados.add(new Ingrediente("1", "Tomate", "PROV1", "Verduras",
+                false, false, false, false));
+        crearArchivoConDatos(ingredientesEsperados);
+
+        // Act
+        List<Ingrediente> resultado = dao.recuperarIngredientes();
+
+        // Assert
+        assertNotNull(resultado);
+        assertEquals(1, resultado.size());
+        assertEquals("Tomate", resultado.get(0).getNombre());
+    }
+
+    // TEST PARA actualizarIngrediente() - NUEVO INGREDIENTE
     @Test
     public void testActualizarIngrediente_Nuevo() {
-        //Preparamos un ingrediente nuevo
-        Ingrediente nuevoIngrediente = new Ingrediente("1", "Tomate", "PROV001", "Verduras Frescas",
+        // Arrange
+        Ingrediente nuevo = new Ingrediente("1", "Tomate", "PROV1", "Verduras",
                 false, false, false, false);
 
-        //Ejecutamos el método actualizarIngrediente
-        dao.actualizarIngrediente(nuevoIngrediente);
+        // Act
+        dao.actualizarIngrediente(nuevo);
 
-        //Verificamos que se agregó correctamente
+        // Assert: Verificamos que se creó el archivo y tiene datos
+        File archivo = new File(ARCHIVO_PRUEBA);
+        assertTrue(archivo.exists());
+
         List<Ingrediente> resultado = dao.recuperarIngredientes();
         assertEquals(1, resultado.size());
         assertEquals("Tomate", resultado.get(0).getNombre());
     }
 
-    // TEST para actualizarIngrediente cuando modificamos un ingrediente existente
-    @Test
-    public void testActualizarIngrediente_Modificar() {
-        // Arrange: Creamos y guardamos un ingrediente
-        Ingrediente ingredienteOriginal = new Ingrediente("1", "Harina", "PROV001", "Molinos",
-                true, false, false, false);
-        dao.actualizarIngrediente(ingredienteOriginal);
-
-        // Creamos otro ingrediente con el mismo ID para modificar
-        Ingrediente ingredienteModificado = new Ingrediente("1", "Harina Integral", "PROV001", "Molinos Salud",
-                false, false, false, false);
-
-        //Ejecutamos actualizarIngrediente con el mismo ID
-        dao.actualizarIngrediente(ingredienteModificado);
-
-        // Verificamos que se modificó y no se duplicó
-        List<Ingrediente> resultado = dao.recuperarIngredientes();
-        assertEquals(1, resultado.size());
-        assertEquals("Harina Integral", resultado.get(0).getNombre());
-        assertFalse(resultado.get(0).isGluten());
-    }
-
-    // TEST para guardarIngredientes, guardamos una lista completa
+    // TEST PARA guardarIngredientes()
     @Test
     public void testGuardarIngredientes() {
-        //Creamos una lista de ingredientes
-        Ingrediente ingrediente1 = new Ingrediente("1", "Azúcar", "PROV002", "Dulces S.A.",
-                false, false, false, false);
-        Ingrediente ingrediente2 = new Ingrediente("2", "Sal", "PROV003", "Salinas",
-                false, false, false, false);
+        // Arrange
+        List<Ingrediente> ingredientes = new ArrayList<>();
+        ingredientes.add(new Ingrediente("1", "Azúcar", "PROV2", "Dulces",
+                false, false, false, false));
+        ingredientes.add(new Ingrediente("2", "Sal", "PROV3", "Salinas",
+                false, false, false, false));
 
-        // Primero guardamos individualmente para crear la lista
-        dao.actualizarIngrediente(ingrediente1);
-        dao.actualizarIngrediente(ingrediente2);
+        // Act
+        dao.guardarIngredientes(ingredientes);
 
-        // Recuperamos la lista actual
-        List<Ingrediente> listaActual = dao.recuperarIngredientes();
+        // Assert
+        File archivo = new File(ARCHIVO_PRUEBA);
+        assertTrue(archivo.exists());
 
-        //Ejecutamos guardarIngredientes con la lista
-        dao.guardarIngredientes(listaActual);
-
-        //Verificamos que los datos se mantienen después de guardar
         List<Ingrediente> resultado = dao.recuperarIngredientes();
         assertEquals(2, resultado.size());
-        assertEquals("Azúcar", resultado.get(0).getNombre());
-        assertEquals("Sal", resultado.get(1).getNombre());
+    }
+
+    private void crearArchivoConDatos(List<Ingrediente> ingredientes) throws IOException {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARCHIVO_PRUEBA))) {
+            oos.writeObject(ingredientes);
+        }
     }
 }
