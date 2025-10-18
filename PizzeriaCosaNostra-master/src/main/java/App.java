@@ -30,7 +30,7 @@ public class App {
                     String pathProp = "src/main/resources/config.properties";
                     String pathLocal = "src/main/resources/locales.csv";
                     String pathPizza = "src/main/resources/Carta.xml";
-                    String pathIngedientes = "src/main/resources/ingredientes.dat";
+                    String pathIngedientes = "PizzeriaCosaNostra-master/src/main/resources/ingredientes.dat";
                     //Este fichero hay que generarlo
                     String pathPizzaJSON = "src/main/resources/Pizzas.json";
                     //DAOS TO-DO
