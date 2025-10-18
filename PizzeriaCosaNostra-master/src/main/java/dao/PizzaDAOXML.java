@@ -21,7 +21,7 @@ public class PizzaDAOXML implements PizzaDAO{
     @Override
     public List<Pizza> recuperarPizzas() {
         try {
-            // Crear o contexto JAXB para a clase raíz
+            // Crear o contexto JAXB para la clase raíz
             JAXBContext context = JAXBContext.newInstance(Carta.class);
 
             // Crear o unmarshaller
