@@ -1,4 +1,4 @@
-package dao;
+/*package dao;
 
 import model.Pizza;
 
@@ -30,4 +30,4 @@ public class PizzaDAOJSON implements  PizzaDAO{
     public void generarJson() {
 
     }
-}
+}*/

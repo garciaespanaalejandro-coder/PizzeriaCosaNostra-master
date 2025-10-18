@@ -2,7 +2,9 @@ import controlador.IngredienteController;
 import controlador.LandingPageController;
 import controlador.LocalController;
 import controlador.PizzaController;
-import dao.*;
+import dao.IngredientesDAOIMPL;
+import dao.LandingPageDAO;
+import dao.LandingPageDAOProperties;
 import service.*;
 import vista.*;
 
@@ -27,19 +29,18 @@ public class App {
                     /*===============ZONA DE CÓDIGO MODIFICABLE===============*/
                     String pathProp = "PizzeriaCosaNostra-master/src/main/resources/config.properties";
                     String pathLocal = "src/main/resources/locales.csv";
-                    String pathPizza = "PizzeriaCosaNostra-master/src/main/resources/Carta.xml";
+                    String pathPizza = "src/main/resources/Carta.xml";
                     String pathIngedientes = "PizzeriaCosaNostra-master/src/main/resources/ingredientes.dat";
                     //Este fichero hay que generarlo
                     String pathPizzaJSON = "src/main/resources/Pizzas.json";
                     //DAOS TO-DO
                     LandingPageDAO dao = new LandingPageDAOProperties(pathProp);    //Creamos el DAO con el path del properties
-                    PizzaDAO daoPiz = new PizzaDAOXML(pathPizza);
-                    IngredientesDAOIMPL dao2= new IngredientesDAOIMPL(pathIngedientes); //Creamos el DAO con el path de ingredientes
+                    IngredientesDAOIMPL dao2= new IngredientesDAOIMPL(pathIngedientes);
 
                     //Servicios TO-DO
                     LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Creamos el service y asignamos el dao y a correr
                     LocalService localService = new LocalServiceMock();
-                    PizzaService pizzaService = new PizzaServiceFuncional(daoPiz);              //Creamos el service y asignamos el dao y a correr
+                    PizzaService pizzaService = new PizzaServiceMock();
                     IngredienteService ingredienteService = new IngredienteServiceFuncional(dao2);  //Creamos el service y asignamos el dao y a correr
                     PizzaConversionService conversionService = new PizzaConversionServiceMock();
 

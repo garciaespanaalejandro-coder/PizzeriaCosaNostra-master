@@ -68,7 +68,7 @@ public class LocalDAOIMPL implements LocalDAO{
         if (!encontrado) {
             listaLocales.add(lo);
         }
-
+        guardarCSV(listaLocales);
     }
 
     public void guardarCSV( List <Local> list){

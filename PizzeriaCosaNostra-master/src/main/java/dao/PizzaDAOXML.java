@@ -1,4 +1,4 @@
-package dao;
+/*package dao;
 
 import model.Carta;
 import model.Pizza;
@@ -87,4 +87,4 @@ public class PizzaDAOXML implements PizzaDAO{
 
     @Override
     public void generarJson() {}
-}
+}*/

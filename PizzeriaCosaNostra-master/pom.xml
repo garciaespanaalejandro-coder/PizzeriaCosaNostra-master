@@ -20,5 +20,17 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.5</version>
         </dependency>
+
+        <!-- JUnit 5 (Jupiter API + Engine) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.2</version>
+            <!-- Garantiza que JUnit no se incluye en el runtime de tu aplicación,
+            solo cuando ejecutes las pruebas.-->
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
 </project>
