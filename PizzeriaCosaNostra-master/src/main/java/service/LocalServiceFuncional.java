@@ -15,6 +15,7 @@ public class LocalServiceFuncional implements LocalService{
         this.localDAO=l;
     }
 
+    //Desde nuestro atributo llamamos a las funciones del PizzaDAOXML
     @Override
     public List<Local> listadoLocales() throws IOException {
         return localDAO.recuperarFichero();

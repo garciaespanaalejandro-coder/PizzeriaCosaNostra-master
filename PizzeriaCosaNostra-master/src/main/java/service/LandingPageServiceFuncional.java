@@ -15,7 +15,7 @@ public class LandingPageServiceFuncional implements LandingPageService {
     @Override
     public LandingPageContent getLandingPageContent(String idioma) {
         //Creamos un LandingPageContent(que es el model) y le asignamos las Strings
-        //Desde nuestro atributo llamando a las funciones del LandingPageDAOProperties
+        //Desde nuestro atributo llamamos a las funciones del LandingPageDAOProperties
         LandingPageContent segunIdioma= new LandingPageContent(LP.quienes_somos(idioma),
                                                                 LP.amor_productos(idioma),
                                                                 LP.experiencia(idioma));

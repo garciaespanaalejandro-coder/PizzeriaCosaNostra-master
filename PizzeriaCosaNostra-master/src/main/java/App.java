@@ -30,19 +30,20 @@ public class App {
                     String pathPizza = "PizzeriaCosaNostra-master/src/main/resources/Carta.xml";
                     String pathIngedientes = "PizzeriaCosaNostra-master/src/main/resources/ingredientes.dat";
                     //Este fichero hay que generarlo
-                    String pathPizzaJSON = "src/main/resources/Pizzas.json";
+                    String pathPizzaJSON = "PizzeriaCosaNostra-master/src/main/resources/Pizzas.json";
                     //DAOS TO-DO
-                    LandingPageDAO dao = new LandingPageDAOProperties(pathProp);    //Creamos el DAO con el path del properties
+                    LandingPageDAO dao = new LandingPageDAOProperties(pathProp);
                     IngredientesDAOIMPL dao2= new IngredientesDAOIMPL(pathIngedientes);
                     PizzaDAO pzDAO = new PizzaDAOXML(pathPizza);
                     LocalDAO locDAO = new LocalDAOIMPL(pathLocal);
+                    PizzaDAO jsonDAO = new PizzaDAOJSON(pathPizzaJSON);
 
                     //Servicios TO-DO
-                    LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Creamos el service y asignamos el dao y a correr
-                    LocalService localService = new LocalServiceFuncional(locDAO);
-                    PizzaService pizzaService = new PizzaServiceFuncional(pzDAO);
-                    IngredienteService ingredienteService = new IngredienteServiceFuncional(dao2);  //Creamos el service y asignamos el dao y a correr
-                    PizzaConversionService conversionService = new PizzaConversionServiceMock();
+                    LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Creamos el service y asignamos el dao
+                    LocalService localService = new LocalServiceFuncional(locDAO);                 //Creamos el service y asignamos el dao
+                    PizzaService pizzaService = new PizzaServiceFuncional(pzDAO);                   //Creamos el service y asignamos el dao
+                    IngredienteService ingredienteService = new IngredienteServiceFuncional(dao2);  //Creamos el service y asignamos el dao
+                    PizzaConversionService conversionService = new PizzaConversionServiceFuncional(pzDAO, jsonDAO);     //Al service le pasamos dos DAOs, uno para leer el xml y otro para el JSON
 
                     /*===============FIN ZONA DE CÓDIGO MODIFICABLE===============*/
                     // Inicializar vistas
