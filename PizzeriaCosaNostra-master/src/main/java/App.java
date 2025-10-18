@@ -5,6 +5,7 @@ import controlador.PizzaController;
 import dao.IngredientesDAOIMPL;
 import dao.LandingPageDAO;
 import dao.LandingPageDAOProperties;
+import dao.LocalDAOIMPL;
 import service.*;
 import vista.*;
 
@@ -28,7 +29,7 @@ public class App {
                 try {
                     /*===============ZONA DE CÓDIGO MODIFICABLE===============*/
                     String pathProp = "PizzeriaCosaNostra-master/src/main/resources/config.properties";
-                    String pathLocal = "src/main/resources/locales.csv";
+                    String pathLocal = "PizzeriaCosaNostra-master/src/main/resources/locales.csv";
                     String pathPizza = "src/main/resources/Carta.xml";
                     String pathIngedientes = "PizzeriaCosaNostra-master/src/main/resources/ingredientes.dat";
                     //Este fichero hay que generarlo
@@ -36,10 +37,11 @@ public class App {
                     //DAOS TO-DO
                     LandingPageDAO dao = new LandingPageDAOProperties(pathProp);    //Creamos el DAO con el path del properties
                     IngredientesDAOIMPL dao2= new IngredientesDAOIMPL(pathIngedientes);
+                    LocalDAOIMPL dao3= new LocalDAOIMPL(pathLocal);
 
                     //Servicios TO-DO
                     LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Creamos el service y asignamos el dao y a correr
-                    LocalService localService = new LocalServiceMock();
+                    LocalService localService = new LocalServiceFuncional(dao3);
                     PizzaService pizzaService = new PizzaServiceMock();
                     IngredienteService ingredienteService = new IngredienteServiceFuncional(dao2);  //Creamos el service y asignamos el dao y a correr
                     PizzaConversionService conversionService = new PizzaConversionServiceMock();
