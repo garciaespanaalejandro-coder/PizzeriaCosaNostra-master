@@ -27,7 +27,7 @@ public class App {
             SwingUtilities.invokeLater(() -> {
                 try {
                     /*===============ZONA DE CÓDIGO MODIFICABLE===============*/
-                    String pathProp = "src/main/resources/config.properties";
+                    String pathProp = "PizzeriaCosaNostra-master/src/main/resources/config.properties";
                     String pathLocal = "src/main/resources/locales.csv";
                     String pathPizza = "src/main/resources/Carta.xml";
                     String pathIngedientes = "PizzeriaCosaNostra-master/src/main/resources/ingredientes.dat";
@@ -41,7 +41,7 @@ public class App {
                     LandingPageService landingService = new LandingPageServiceFuncional(dao);   //Creamos el service y asignamos el dao y a correr
                     LocalService localService = new LocalServiceMock();
                     PizzaService pizzaService = new PizzaServiceMock();
-                    IngredienteService ingredienteService = new IngredienteServiceFuncional(dao2);
+                    IngredienteService ingredienteService = new IngredienteServiceFuncional(dao2);  //Creamos el service y asignamos el dao y a correr
                     PizzaConversionService conversionService = new PizzaConversionServiceMock();
 
                     /*===============FIN ZONA DE CÓDIGO MODIFICABLE===============*/
