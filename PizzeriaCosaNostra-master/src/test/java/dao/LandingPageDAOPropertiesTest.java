@@ -12,12 +12,13 @@ import java.util.Properties;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LandingPageDAOPropertiesTest {
-    private LandingPageDAOProperties dao;
+    private LandingPageDAOProperties daoProp;
     private String testFilePath = "test_landing.properties";
 
+    // Crear archivo temporal de prueba
     @BeforeEach
     public void setUp() throws IOException {
-        // Crear archivo temporal de prueba
+
         Properties props = new Properties();
         props.setProperty("quienes_somos.ES", "Somos una cadena gallega");
         props.setProperty("quienes_somos.EN", "We are a Galician family-owned");
@@ -28,9 +29,9 @@ public class LandingPageDAOPropertiesTest {
             props.store(writer, "Archivo de prueba");
         }
 
-        dao = new LandingPageDAOProperties(testFilePath);
+        daoProp = new LandingPageDAOProperties(testFilePath);
     }
-
+    // eliminar archivo temporal de prueba
     @AfterEach
     public void tearDown() {
         File archi = new File(testFilePath);
@@ -38,34 +39,34 @@ public class LandingPageDAOPropertiesTest {
             archi.delete();
         }
     }
-
+    //probar las clases comprobando resultados
     @Test
     public void testQuienesSomos_ES() {
-        String resultado = dao.quienes_somos("ES");
+        String resultado = daoProp.quienes_somos("ES");
         assertEquals("Somos una cadena gallega", resultado);
     }
 
     @Test
     public void testQuienesSomos_EN() {
-        String resultado = dao.quienes_somos("EN");
+        String resultado = daoProp.quienes_somos("EN");
         assertEquals("We are a Galician family-owned", resultado);
     }
 
     @Test
     public void testAmorProductos_ES() {
-        String resultado = dao.amor_productos("ES");
+        String resultado = daoProp.amor_productos("ES");
         assertEquals("Nuestras pizzas nacen del amor", resultado);
     }
 
     @Test
     public void testExperiencia_ES() {
-        String resultado = dao.experiencia("ES");
+        String resultado = daoProp.experiencia("ES");
         assertEquals("Venir a nuestra pizze", resultado);
     }
 
     @Test
     public void testClaveNoExistente() {
-        String resultado = dao.experiencia("FR");
+        String resultado = daoProp.experiencia("FR");
         assertEquals("", resultado, "Debe devolver cadena vacía si no existe la clave");
     }
 }
