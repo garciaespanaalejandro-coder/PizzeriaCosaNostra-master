@@ -1,5 +1,6 @@
 package service;
 
+import dao.LocalDAO;
 import dao.LocalDAOIMPL;
 import model.Local;
 
@@ -8,18 +9,19 @@ import java.util.List;
 
 public class LocalServiceFuncional implements LocalService{
 
-    private LocalDAOIMPL localDAOIMPL;
+    private LocalDAO localDAO;
 
-    public LocalServiceFuncional(LocalDAOIMPL localDAOIMPL){
-        this.localDAOIMPL=localDAOIMPL;
+    public LocalServiceFuncional(LocalDAO l){
+        this.localDAO=l;
     }
+
     @Override
     public List<Local> listadoLocales() throws IOException {
-        return localDAOIMPL.recuperarFichero();
+        return localDAO.recuperarFichero();
     }
 
     @Override
     public void actualizarLocal(Local l) throws IOException {
-        localDAOIMPL.actualizarLocal(l);
+        localDAO.actualizarLocal(l);
     }
 }
