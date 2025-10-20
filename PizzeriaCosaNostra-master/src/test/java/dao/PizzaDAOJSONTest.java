@@ -20,15 +20,11 @@ public class PizzaDAOJSONTest {
     private String testJsonPath = "test_pizza.json";
     private Gson gson = new Gson();
 
+    //Crear archivo temporal
     @BeforeEach
     public void setUp() throws IOException {
 
         daoJson = new PizzaDAOJSON(testJsonPath);
-
-        File fil = new File(testJsonPath);
-        if (fil.exists()) {
-            fil.delete();
-        }
     }
 
     // eliminar archivo temporal de prueba
