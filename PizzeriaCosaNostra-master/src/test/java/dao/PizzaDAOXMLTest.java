@@ -1,6 +1,7 @@
 package dao;
 
 import model.Carta;
+import model.Ingrediente;
 import model.Pizza;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +11,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,9 +25,11 @@ public class PizzaDAOXMLTest {
     public void setUp() throws Exception {
         Carta car = new Carta();
 
+        List<String> ingredientes = Arrays.asList("ING001", "ING005", "ING008");
+
         List<Pizza> lista = new ArrayList<>();
-        Pizza p1 = new Pizza("1", "Margarita", "esta rica", 500, 15.2, 30, new ArrayList<String>());
-        Pizza p2 = new Pizza("2", "Tutto", "esta muy rica", 600, 20.5, 40, new ArrayList<String>());
+        Pizza p1 = new Pizza("1", "Margarita", "esta rica", 500, 15.2, 30, ingredientes);
+        Pizza p2 = new Pizza("2", "Tutto", "esta muy rica", 600, 20.5, 40, ingredientes);
 
         lista.add(p1);
         lista.add(p2);
@@ -40,6 +44,7 @@ public class PizzaDAOXMLTest {
         marshaller.marshal(car, new File(testXMLPath));
 
         daoXML = new PizzaDAOXML(testXMLPath);
+
     }
 
     // eliminar archivo temporal de prueba
@@ -55,26 +60,29 @@ public class PizzaDAOXMLTest {
     @Test
     void testRecuperarPizzas() {
         List<Pizza> pizzas = daoXML.recuperarPizzas();
-        assertEquals(2, pizzas.size(), "Debería recuperar 2 pizzas");
+        assertEquals(2, pizzas.size(), "Tiene que haber 2 pizzas");
         assertEquals("Margarita", pizzas.get(0).getNombre());
     }
 
-    //comprobar el actualizar una existente
+    //comprobar el actualizar una que ya existe
     @Test
     void testActualizarPizzaExistente() {
-        Pizza nueva = new Pizza("1", "Margarita Deluxe", "con mucho queso", 850, 8.0, 15, new ArrayList<String>());
+        List<String> ingredientes = Arrays.asList("ING001", "ING005", "ING008");
+        Pizza nueva = new Pizza("1", "Margarita Deluxe", "con mucho queso", 850, 8.0, 15, ingredientes);
         boolean result = daoXML.actualizarPizzas(nueva);
 
         assertTrue(result); // xa existía
 
         List<Pizza> pizzas = daoXML.recuperarPizzas();
         assertEquals("Margarita Deluxe", pizzas.get(0).getNombre());
+        assertEquals("con mucho queso", pizzas.get(0).getDescripcion());
     }
 
     // comprobar el agregar una nueva
     @Test
     void testAgregarPizzaNueva() {
-        Pizza nueva = new Pizza("3", "Cuatro quesos", "mucho de quesos", 1200, 15.0, 11, new ArrayList<String>());
+        List<String> ingredientes = Arrays.asList("ING001", "ING005", "ING008");
+        Pizza nueva = new Pizza("3", "Cuatro quesos", "mucho de quesos", 1200, 15.0, 11, ingredientes);
         boolean actualizado = daoXML.actualizarPizzas(nueva);
 
         assertFalse(actualizado); // porque non existía
@@ -82,7 +90,4 @@ public class PizzaDAOXMLTest {
         List<Pizza> pizzas = daoXML.recuperarPizzas();
         assertEquals(3, pizzas.size(), "tiene que haber 3 pizzas al agregar una nueva");
     }
-
-
-
 }

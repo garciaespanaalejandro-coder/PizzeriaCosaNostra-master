@@ -53,7 +53,7 @@ public class LocalDAOIMPL implements LocalDAO{
     public void actualizarLocal(Local lo) {
         List<Local> listaLocales = recuperarFichero();
         boolean encontrado = false;
-        //buscamos si el ingrediente ya existe
+        //buscamos si el local ya existe
         for (int i = 0; i < listaLocales.size(); i++) {
             Local actual = listaLocales.get(i);
             //comprobamos si el id es igual, en caso de que sea igual lo modifica.

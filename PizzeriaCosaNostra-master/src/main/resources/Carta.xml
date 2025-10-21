@@ -7,6 +7,10 @@
         <Precio>9.5</Precio>
         <TiempoPreparacion>20</TiempoPreparacion>
         <Ingredientes>
+            <Ingrediente>ING001</Ingrediente>
+            <Ingrediente>ING002</Ingrediente>
+            <Ingrediente>ING014</Ingrediente>
+            <Ingrediente>ING013</Ingrediente>
         </Ingredientes>
     </Pizza>
     <Pizza ID="PZZ002">
@@ -16,6 +20,11 @@
         <Precio>10.5</Precio>
         <TiempoPreparacion>25</TiempoPreparacion>
         <Ingredientes>
+            <Ingrediente>ING008</Ingrediente>
+            <Ingrediente>ING009</Ingrediente>
+            <Ingrediente>ING012</Ingrediente>
+            <Ingrediente>ING002</Ingrediente>
+            <Ingrediente>ING010</Ingrediente>
         </Ingredientes>
     </Pizza>
     <Pizza ID="PZZ003">
@@ -25,6 +34,10 @@
         <Precio>10.0</Precio>
         <TiempoPreparacion>22</TiempoPreparacion>
         <Ingredientes>
+            <Ingrediente>ING006</Ingrediente>
+            <Ingrediente>ING007</Ingrediente>
+            <Ingrediente>ING002</Ingrediente>
+            <Ingrediente>ING003</Ingrediente>
         </Ingredientes>
     </Pizza>
     <Pizza ID="PZZ004">
@@ -34,6 +47,10 @@
         <Precio>11.0</Precio>
         <TiempoPreparacion>20</TiempoPreparacion>
         <Ingredientes>
+            <Ingrediente>ING002</Ingrediente>
+            <Ingrediente>ING003</Ingrediente>
+            <Ingrediente>ING004</Ingrediente>
+            <Ingrediente>ING005</Ingrediente>
         </Ingredientes>
     </Pizza>
     <Pizza ID="PZZ005">
@@ -43,6 +60,10 @@
         <Precio>11.5</Precio>
         <TiempoPreparacion>22</TiempoPreparacion>
         <Ingredientes>
+            <Ingrediente>ING002</Ingrediente>
+            <Ingrediente>ING015</Ingrediente>
+            <Ingrediente>ING016</Ingrediente>
+            <Ingrediente>ING017</Ingrediente>
         </Ingredientes>
     </Pizza>
     <Pizza ID="PZZ006">
@@ -52,13 +73,22 @@
         <Precio>12.0</Precio>
         <TiempoPreparacion>22</TiempoPreparacion>
         <Ingredientes>
+            <Ingrediente>ING001</Ingrediente>
+            <Ingrediente>ING002</Ingrediente>
+            <Ingrediente>ING007</Ingrediente>
         </Ingredientes>
     </Pizza>
     <Pizza ID="PZZ007">
-        <Nombre>Tutto</Nombre>
-        <Descripcion>Muy rica</Descripcion>
-        <Calorias>400</Calorias>
-        <Precio>15.15</Precio>
-        <TiempoPreparacion>30</TiempoPreparacion>
+        <Nombre>Boloñesa</Nombre>
+        <Descripcion>Carne de Vacuno</Descripcion>
+        <Calorias>900</Calorias>
+        <Precio>15.5</Precio>
+        <TiempoPreparacion>25</TiempoPreparacion>
+        <Ingredientes>
+            <Ingrediente>ING001</Ingrediente>
+            <Ingrediente>ING002</Ingrediente>
+            <Ingrediente>ING012</Ingrediente>
+            <Ingrediente>ING007</Ingrediente>
+        </Ingredientes>
     </Pizza>
 </Carta>

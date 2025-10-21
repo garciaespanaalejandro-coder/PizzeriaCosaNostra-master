@@ -84,7 +84,7 @@ public class PizzaDAOXML implements PizzaDAO{
         }
 
     }
-
+    // vacio porque no se va usar
     @Override
     public void generarJson(List<Pizza> listPIz) {}
 }

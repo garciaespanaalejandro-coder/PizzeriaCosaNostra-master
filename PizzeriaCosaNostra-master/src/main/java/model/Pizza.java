@@ -2,6 +2,7 @@ package model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,8 @@ public class Pizza {
     public int getTiempoPreparacion() { return tiempoPreparacion; }
     public void setTiempoPreparacion(int tiempoPreparacion) { this.tiempoPreparacion = tiempoPreparacion; }
 
-    @XmlElement(name="Ingredientes")
+    @XmlElementWrapper(name="Ingredientes")
+    @XmlElement(name="Ingrediente")
     public List<String> getIngredientes() { return ingredientes; }
     public void setIngredientes(List<String> ingredientes) { this.ingredientes = ingredientes; }
 
