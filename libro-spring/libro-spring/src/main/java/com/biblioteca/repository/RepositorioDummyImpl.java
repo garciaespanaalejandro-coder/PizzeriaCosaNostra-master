@@ -1,9 +1,11 @@
 package com.biblioteca.repository;
 
-public class RepositorioDummyImpl implements RepositorioDummy{
+import org.springframework.stereotype.Repository;
 
+@Repository
+public class RepositorioDummyImpl implements RepositorioDummy{
     @Override
     public void hacerAlgo() {
-        System.out.println("Haciendo algo :)");
+        System.out.println("Haciendo algo... :)");
     }
 }
